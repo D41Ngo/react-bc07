@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './modules/BTLayout/Home';
+import DataBinding from './modules/DataBinding/DataBinding';
+import HandleEvent from './modules/HandleEvent/HandleEvent';
+import CardRCC from './modules/TaoComponent/CardRCC';
+import CardRFC from './modules/TaoComponent/CardRFC';
+import Navbar from './modules/TaoComponent/Navbar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			{/* <Navbar /> */}
+			{/* <Navbar></Navbar> */}
+
+			{/* <CardRCC />
+			<CardRCC />
+			<CardRCC></CardRCC>
+
+			<CardRFC /> */}
+
+			{/* <Home /> */}
+
+			{/* <DataBinding /> */}
+
+			<HandleEvent />
+		</div>
+	);
 }
 
 export default App;
