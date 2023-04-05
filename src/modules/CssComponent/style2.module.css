@@ -1,0 +1,16 @@
+.text-blue {
+	color: blue;
+	text-transform: uppercase;
+}
+
+.text-green {
+	color: green;
+}
+
+.TextRed {
+	color: red;
+}
+
+.FontSize {
+	font-size: 60px;
+}
