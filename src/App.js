@@ -12,6 +12,7 @@ import CardRCC from './modules/TaoComponent/CardRCC';
 import CardRFC from './modules/TaoComponent/CardRFC';
 import Navbar from './modules/TaoComponent/Navbar';
 import RenderArray from './modules/RenderArray';
+import DemoProps from './modules/Props/DemoProps';
 
 function App() {
 	return (
@@ -31,7 +32,9 @@ function App() {
 			{/* <HouseColor /> */}
 			{/* <CarColor /> */}
 
-			<RenderArray />
+			{/* <RenderArray /> */}
+
+			<DemoProps />
 		</div>
 	);
 }
