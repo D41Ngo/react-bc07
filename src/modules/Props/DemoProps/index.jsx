@@ -24,20 +24,10 @@ export default class DemoProps extends Component {
 
 				<div className='row'>
 					<div className='col-4'>
-						<Card
-							name='Iphone'
-							price='9000'
-							img='https://i.pravatar.cc?img=65'
-							moTa='day la anh so 1'
-						/>
+						<Card data={this.product1} />
 					</div>
 					<div className='col-4'>
-						<Card
-							name='Samsung'
-							price='1000'
-							img='https://i.pravatar.cc?img=66'
-							moTa='day la anh so 2'
-						/>
+						<Card data={product2} />
 					</div>
 				</div>
 			</div>

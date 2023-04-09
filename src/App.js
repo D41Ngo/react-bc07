@@ -13,6 +13,8 @@ import CardRFC from './modules/TaoComponent/CardRFC';
 import Navbar from './modules/TaoComponent/Navbar';
 import RenderArray from './modules/RenderArray';
 import DemoProps from './modules/Props/DemoProps';
+import ProductList from './modules/Props/ShoeShop/index';
+import PhoneShop from './modules/Props/PhoneShop';
 
 function App() {
 	return (
@@ -34,7 +36,11 @@ function App() {
 
 			{/* <RenderArray /> */}
 
-			<DemoProps />
+			{/* <DemoProps /> */}
+
+			{/* <ProductList /> */}
+
+			<PhoneShop />
 		</div>
 	);
 }

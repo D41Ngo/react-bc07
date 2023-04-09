@@ -13,18 +13,21 @@ export default class Card extends Component {
 		 *  ...
 		 * }
 		 */
-		const { moTa, img, name, price } = this.props;
+		// const { moTa, img, name, price } = this.props;
+		const { data } = this.props;
+		// this.props.product2
+		// this.props.data
 		//es5
 		// var moTa = this.props.moTa;
 		// var img = this.props.img;
 
 		return (
 			<div className='card'>
-				<img alt={moTa} src={img} />
+				<img alt={data.moTa} src={data.img} />
 
 				<div className='card-body'>
-					<p>{name}</p>
-					<p>{price}</p>
+					<p>{data.name}</p>
+					<p>{data.price}</p>
 				</div>
 			</div>
 		);
