@@ -20,3 +20,8 @@ react: 18.2.1
 
 App.js: chúng ta sẽ code chính, root của ứng dụng
 index.js: chúng ta chỉ liên kết tới file html và render ra giao diện
+
+state =
+{
+gioHang: []
+}

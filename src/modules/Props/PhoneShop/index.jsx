@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CardItem from './CardItem';
+import SanPhamChiTiet from './SanPhamChiTiet';
+import GioHang from './GioHang';
 
 export default class PhoneShop extends Component {
 	/**
@@ -58,6 +60,30 @@ export default class PhoneShop extends Component {
 			giaBan: 27000000,
 			hinhAnh: './img/applephone.jpg',
 		},
+
+		gioHang: [
+			{
+				maSP: 3,
+				tenSP: 'Iphone XS Max',
+				giaBan: 27000000,
+				hinhAnh: './img/applephone.jpg',
+				soLuong: 2,
+			},
+			{
+				maSP: 2,
+				tenSP: 'Iphone XS Max',
+				giaBan: 27000000,
+				hinhAnh: './img/applephone.jpg',
+				soLuong: 5,
+			},
+			{
+				maSP: 21,
+				tenSP: 'Iphone XS Max',
+				giaBan: 27000000,
+				hinhAnh: './img/applephone.jpg',
+				soLuong: 1,
+			},
+		],
 	};
 
 	renderPhone = () => {
@@ -65,6 +91,7 @@ export default class PhoneShop extends Component {
 			return (
 				<div className='col-4'>
 					<CardItem
+						// QUY ƯỚC CHUNG: Đăt tên prop theo kiểu camelCase.
 						data={item}
 						handleXemChiTiet={() => {
 							// console.log('bla bla');
@@ -74,6 +101,9 @@ export default class PhoneShop extends Component {
 						handleDemo={(item) => {
 							console.log(item);
 						}}
+
+						// HANDLE_XEM_CHI_TIET
+						// handle_xem_chi_tiet
 					/>
 					{/* <div className='card'>
 						<img src={item.hinhAnh} alt={item.tenSP} />
@@ -101,16 +131,7 @@ export default class PhoneShop extends Component {
 	};
 
 	render() {
-		const {
-			manHinh,
-			heDieuHanh,
-			cameraSau,
-			cameraTruoc,
-			rom,
-			ram,
-			tenSP,
-			hinhAnh,
-		} = this.state.spChiTiet;
+		const { tenSP, hinhAnh } = this.state.spChiTiet;
 
 		/**
 		 * phân biệt giữa props và state:
@@ -122,6 +143,9 @@ export default class PhoneShop extends Component {
 
 		return (
 			<div className='container mt-2'>
+				<div>
+					<GioHang gioHang={this.state.gioHang} />
+				</div>
 				<div className='row'>{this.renderPhone()}</div>
 
 				<div className='row mt-5'>
@@ -137,34 +161,14 @@ export default class PhoneShop extends Component {
 					</div>
 
 					<div className='col-9'>
-						<h2>Thông Số Kỹ Thuật</h2>
-
-						<table className='table'>
-							<tr>
-								<td>Màn Hình</td>
-								<td>{manHinh}</td>
-							</tr>
-							<tr>
-								<td>Hệ Điều Hành</td>
-								<td>{heDieuHanh}</td>
-							</tr>
-							<tr>
-								<td>Camera Trước</td>
-								<td>{cameraTruoc}</td>
-							</tr>
-							<tr>
-								<td>Camera Sau</td>
-								<td>{cameraSau}</td>
-							</tr>
-							<tr>
-								<td>RAM</td>
-								<td>{ram}</td>
-							</tr>
-							<tr>
-								<td>ROM</td>
-								<td>{rom}</td>
-							</tr>
-						</table>
+						{/* - spChiTiet: tên props mà các bạn muốn truyền
+                            - this.state.spChiTiet: giá trị các bạn muốn truyền thông qua tên props spChiTiet
+                        */}
+						<SanPhamChiTiet
+							spChiTiet={this.state.spChiTiet}
+							maSP={this.state.spChiTiet.maSP}
+							img={this.state.spChiTiet.hinhAnh}
+						/>
 					</div>
 				</div>
 			</div>
