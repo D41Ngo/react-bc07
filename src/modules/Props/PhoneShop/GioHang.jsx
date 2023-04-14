@@ -21,13 +21,31 @@ export default class GioHang extends Component {
 					</td>
 					<td>{sanPham.giaBan.toLocaleString()}</td>
 					<td>
-						<button className='btn btn-success mx-2'>+</button>
+						<button
+							className='btn btn-success mx-2'
+							onClick={() => {
+								this.props.tangGiamSoLuongSanPham(sanPham.maSP, 1);
+							}}>
+							+
+						</button>
 						{sanPham.soLuong}
-						<button className='btn btn-success mx-2'>-</button>
+						<button
+							className='btn btn-success mx-2'
+							onClick={() => {
+								this.props.tangGiamSoLuongSanPham(sanPham.maSP, -1);
+							}}>
+							-
+						</button>
 					</td>
 					<td>{(sanPham.giaBan * sanPham.soLuong).toLocaleString()}</td>
 					<td>
-						<button className='btn btn-danger'>Xoá</button>
+						<button
+							className='btn btn-danger'
+							onClick={() => {
+								this.props.xoaSanPham(sanPham.maSP);
+							}}>
+							Xoá
+						</button>
 					</td>
 				</tr>
 			);

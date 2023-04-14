@@ -61,29 +61,7 @@ export default class PhoneShop extends Component {
 			hinhAnh: './img/applephone.jpg',
 		},
 
-		gioHang: [
-			{
-				maSP: 3,
-				tenSP: 'Iphone XS Max',
-				giaBan: 27000000,
-				hinhAnh: './img/applephone.jpg',
-				soLuong: 2,
-			},
-			{
-				maSP: 2,
-				tenSP: 'Iphone XS Max',
-				giaBan: 27000000,
-				hinhAnh: './img/applephone.jpg',
-				soLuong: 5,
-			},
-			{
-				maSP: 21,
-				tenSP: 'Iphone XS Max',
-				giaBan: 27000000,
-				hinhAnh: './img/applephone.jpg',
-				soLuong: 1,
-			},
-		],
+		gioHang: [],
 	};
 
 	renderPhone = () => {
@@ -101,33 +79,94 @@ export default class PhoneShop extends Component {
 						handleDemo={(item) => {
 							console.log(item);
 						}}
-
-						// HANDLE_XEM_CHI_TIET
-						// handle_xem_chi_tiet
+						themGioHang={this.themGioHang}
 					/>
-					{/* <div className='card'>
-						<img src={item.hinhAnh} alt={item.tenSP} />
-
-						<div className='card-body'>
-							<p>{item.tenSP}</p>
-							<p>${item.giaBan.toLocaleString()}</p>
-
-							<button
-								className='btn btn-success'
-								onClick={() => {
-									const newState = { spChiTiet: item };
-
-									this.setState(newState);
-								}}>
-								Xem Chi Tiết
-							</button>
-						</div>
-					</div> */}
 				</div>
 			);
 		});
 
 		return newArr;
+	};
+
+	// state ở đâu thì this.setState ở đó.
+	themGioHang = (spClick) => {
+		// spClick: chưa có thuộc tính số lượng
+		console.log({
+			spClick,
+		});
+
+		// tạo biến giỏ hàng
+		const gioHang = this.state.gioHang;
+
+		const indexSanPhanTimKiem = gioHang.findIndex(
+			(sp) => sp.maSP === spClick.maSP
+		);
+		console.log(indexSanPhanTimKiem);
+
+		if (indexSanPhanTimKiem === -1) {
+			// chưa có trên giỏ hàng
+			spClick.soLuong = 1;
+			gioHang.push(spClick);
+		} else {
+			// có trên giỏ rồi thì thêm số lượng + 1 vào
+			gioHang[indexSanPhanTimKiem].soLuong += 1;
+		}
+
+		// setState
+		this.setState({
+			gioHang: gioHang, // 4 cai
+		});
+	};
+
+	xoaSanPham = (maSanPham) => {
+		console.log(maSanPham);
+
+		let gioHang = this.state.gioHang;
+		const indexSanPhamCanXoa = gioHang.findIndex((sp) => {
+			return sp.maSP === maSanPham;
+		});
+
+		// hiển thị hộp thoại confirm trước khi xóa? trả về true hoặc false
+		if (window.confirm('Bạn có muốn xóa sản phẩm này hay không?')) {
+			// (bắt đầu xóa từ vị trí nào, và xóa bao nhiêu phần tử)
+			gioHang.splice(indexSanPhamCanXoa, 1);
+		}
+
+		this.setState({
+			gioHang: gioHang,
+		});
+	};
+
+	// xoaSanPham(12)
+
+	// gắn method tangGiamSoLuongSanPham cho 2 nut button + , -
+	tangGiamSoLuongSanPham = (maSanPham, soLuong) => {
+		const gioHang = this.state.gioHang;
+
+		const indexSp = gioHang.findIndex((sp) => sp.maSP === maSanPham);
+
+		const spCanTangGiam = gioHang[indexSp];
+
+		spCanTangGiam.soLuong += soLuong;
+
+		//spCanTangGiam.soLuong = 1
+		// nhan nut button - => soLuong = -1
+		// kq: spCanTangGiam.soLuong = 0
+
+		console.log('soLuong', spCanTangGiam.soLuong);
+
+		if (spCanTangGiam.soLuong < 1) {
+			if (window.confirm('Bạn có muốn xóa sản phẩm này hay không?')) {
+				// (bắt đầu xóa từ vị trí nào, và xóa bao nhiêu phần tử)
+				gioHang.splice(indexSp, 1);
+			} else {
+				spCanTangGiam.soLuong = 1; // khôi phục lại số lượng = 1
+			}
+		}
+
+		this.setState({
+			gioHang: gioHang,
+		});
 	};
 
 	render() {
@@ -144,7 +183,11 @@ export default class PhoneShop extends Component {
 		return (
 			<div className='container mt-2'>
 				<div>
-					<GioHang gioHang={this.state.gioHang} />
+					<GioHang
+						tangGiamSoLuongSanPham={this.tangGiamSoLuongSanPham}
+						gioHang={this.state.gioHang}
+						xoaSanPham={this.xoaSanPham}
+					/>
 				</div>
 				<div className='row'>{this.renderPhone()}</div>
 

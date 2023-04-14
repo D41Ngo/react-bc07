@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// config redux
+import { Provider } from 'react-redux';
+import { store } from './redux/configStore';
+
 const root = ReactDOM.createRoot(document.getElementById('main'));
 
 // App là một thẻ của React do chúng ta tự định nghĩa ra
@@ -12,7 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById('main'));
 root.render(
 	<React.StrictMode>
 		{/* React.StrictMode: sẽ giúp chúng ta phát hiện ra lỗi ảnh hưởng để hiệu suất của trang web */}
-		<App />
+		<Provider store={store}>
+			<App />
+		</Provider>
 		{/*App: Root của ứng dụng */}
 	</React.StrictMode>
 );

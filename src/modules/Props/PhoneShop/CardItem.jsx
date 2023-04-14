@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class CardItem extends Component {
 	render() {
-		const { data, handleXemChiTiet, handleDemo } = this.props;
+		const { data, handleXemChiTiet, handleDemo, themGioHang } = this.props;
 		/**
 		 * ES5
 		 * const data = this.props.data;
@@ -25,15 +25,11 @@ export default class CardItem extends Component {
 						Xem Chi Tiết
 					</button>
 
-					{/* <button
-						className='btn btn-info'
+					<button
+						className='btn btn-success mx-2'
 						onClick={() => {
-							handleDemo(data);
+							themGioHang(data);
 						}}>
-						Demo
-					</button> */}
-
-					<button className='btn btn-success mx-2'>
 						<i
 							className='fa-solid fa-cart-plus'
 							style={{
