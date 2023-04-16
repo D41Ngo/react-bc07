@@ -16,6 +16,8 @@ import DemoProps from './modules/Props/DemoProps';
 import ProductList from './modules/Props/ShoeShop/index';
 import PhoneShop from './modules/Props/PhoneShop';
 import TangGiamSoLuongRedux from './modules/DemoRedux/TangGiamSoLuongRedux/TangGiamSoLuongRedux';
+import CarColorRedux from './modules/DemoRedux/CarColorRedux/CarColorRedux';
+import PhoneShopRedux from './modules/DemoRedux/PhoneShopRedux/PhoneShopRedux';
 
 function App() {
 	return (
@@ -43,7 +45,11 @@ function App() {
 
 			{/* <PhoneShop /> */}
 
-			<TangGiamSoLuongRedux />
+			{/* <TangGiamSoLuongRedux /> */}
+
+			{/* <CarColorRedux /> */}
+
+			<PhoneShopRedux />
 		</div>
 	);
 }
