@@ -46,7 +46,13 @@ class GioHangRedux extends Component {
 									</td>
 									<td>{(sanPham.giaBan * sanPham.soLuong).toLocaleString()}</td>
 									<td>
-										<button className='btn btn-danger'>Xoá</button>
+										<button
+											className='btn btn-danger'
+											onClick={() => {
+												this.props.xoaSanPham(sanPham.maSP);
+											}}>
+											Xoá
+										</button>
 									</td>
 								</tr>
 							);
@@ -64,4 +70,30 @@ const mapStateToProps = (rootReducer) => {
 	};
 };
 
-export default connect(mapStateToProps)(GioHangRedux);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		xoaSanPham: (maSP) => {
+			console.log({ maSP });
+
+			// đẩy dữ liệu lên trên redux
+			// Cach 1:
+			// 1.
+			const action = {
+				type: 'XOA_SAN_PHAM', // Mô tả hành động
+				payload: maSP, // gửi dữ liệu lên redux
+			};
+
+			//2.
+			dispatch(action);
+
+			// Cach 2:
+			// dispatch({
+			// 	    type: 'XOA_SAN_PHAM',
+			// 	    payload: maSP,
+			// });
+		},
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux);
+// trả về 1 component 'GioHangRedux' mà có kết hợp với redux
