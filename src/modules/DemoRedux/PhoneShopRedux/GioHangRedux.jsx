@@ -40,9 +40,21 @@ class GioHangRedux extends Component {
 									</td>
 									<td>{sanPham.giaBan.toLocaleString()}</td>
 									<td>
-										<button className='btn btn-success mx-2'>+</button>
+										<button
+											className='btn btn-success mx-2'
+											onClick={() => {
+												this.props.tangGiamSoLuongSanPham(sanPham.maSP, 1);
+											}}>
+											+
+										</button>
 										{sanPham.soLuong}
-										<button className='btn btn-success mx-2'>-</button>
+										<button
+											className='btn btn-success mx-2'
+											onClick={() => {
+												this.props.tangGiamSoLuongSanPham(sanPham.maSP, -1);
+											}}>
+											-
+										</button>
 									</td>
 									<td>{(sanPham.giaBan * sanPham.soLuong).toLocaleString()}</td>
 									<td>
@@ -91,6 +103,20 @@ const mapDispatchToProps = (dispatch) => {
 			// 	    type: 'XOA_SAN_PHAM',
 			// 	    payload: maSP,
 			// });
+		},
+
+		tangGiamSoLuongSanPham: (maSP, soLuong) => {
+			console.log({ maSP, soLuong }); // kiểu dữ liệu mà mình đang log ra ??? object
+			// object literal
+
+			// gửi dữ liệu lên trên Redux
+			dispatch({
+				type: 'TANG_GIAM_SO_LUONG_SAN_PHAM',
+				payload: {
+					maSP,
+					soLuong,
+				},
+			});
 		},
 	};
 };

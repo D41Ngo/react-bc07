@@ -30,8 +30,44 @@ export const gioHangReducer = (state = gioHangStateDefault, action) => {
 				state.push(sp);
 			}
 
+			// copy ra một array mới để có thể re-render
 			return [...state]; // 00xxabs
 			// ...state : spread
+		}
+		case 'XOA_SAN_PHAM': {
+			// trả về gio hàng mới không chứa maSP mà mình muốn xóa
+			const newGioHang = state.filter((sp) => sp.maSP !== action.payload);
+
+			/**
+			 * cách kiểm tra xem có cùng giá trị, hay là địa chỉ hay không
+			 * đổi với array hoặc object
+			 * console.log(newGioHang === state); // true cùng địa chỉ, false thì khác
+			 */
+			return [...newGioHang]; // an toàn nhất
+			// copy ra một array mới,
+			// để nhận về một địa chỉ mới
+			// để redux có thể re-render
+
+			// tại vì newGioHang đã là một địa chỉ mới rồi, không cần copy ra cũng được
+			// return newGioHang; // bạn nào thật sử hiểu về filter find, object array
+
+			// return state.filter((sp) => sp.maSP !== action.payload);
+		}
+
+		case 'TANG_GIAM_SO_LUONG_SAN_PHAM': {
+			const spCanTim = state.find((sp) => sp.maSP === action.payload.maSP);
+
+			// Nếu tìm thấy
+			if (spCanTim) {
+				spCanTim.soLuong += action.payload.soLuong;
+
+				if (spCanTim.soLuong < 1) {
+					alert('Không Được Giảm Số Lượng Thêm Được Nữa !!!');
+					spCanTim.soLuong = 1;
+				}
+			}
+
+			return [...state];
 		}
 		default:
 			return state;

@@ -1,0 +1,31 @@
+/* Định nghĩa font-family */
+@font-face {
+	font-family: Pony;
+	src: url('../../../assets/fonts/Pony.ttf');
+}
+
+.game-xuc-xac {
+	background-image: url('../../../assets/img/bgGame.png');
+	width: 100vw;
+	height: 100vh;
+
+	font-family: Pony; /* Sử dụng */
+}
+
+.heading {
+	font-size: 60px;
+}
+
+.group-xuc-xac {
+	width: 660px;
+	margin: 0 auto;
+}
+
+.btn {
+	width: 80px;
+	height: 80px;
+}
+
+p {
+	font-size: 24px;
+}

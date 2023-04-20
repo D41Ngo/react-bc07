@@ -1,5 +1,6 @@
 import { combineReducers, createStore } from 'redux';
 import { gioHangReducer } from './reducers/gioHangReducer';
+import { gameXucXacReducer } from './reducers/gameXucXacReducer';
 // Khai Báo giá trị mặc định cho state
 const imgCarStateDefault = './img/products/black-car.jpg';
 
@@ -42,6 +43,8 @@ const rootReducer = combineReducers({
 	},
 
 	gioHangReducer: gioHangReducer,
+
+	gameXucXacReducer,
 });
 
 export const store = createStore(
