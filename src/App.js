@@ -11,6 +11,7 @@ import Header from './pages/components/Header';
 import Detail from './pages/Detail';
 import Search from './pages/Search';
 import BaiTapQuanLyForm from './pages/BaiTapQuanLyForm/BaiTapQuanLyForm';
+import Lifecycle from './pages/Lifecycle/Lifecycle';
 
 function App() {
 	return (
@@ -62,6 +63,8 @@ function App() {
 				<Route exact path={'/search'} component={Search} />
 
 				<Route exact path={'/btqlf'} component={BaiTapQuanLyForm} />
+
+				<Route exact path={'/lifecycle'} component={Lifecycle} />
 
 				{/*khai báo parameter trên url*/}
 				<Route exact path={'/detail/:demoId'} component={Detail} />

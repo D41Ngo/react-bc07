@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 
 	//2. mỗi reducer sẽ chứa mỗi state tương ứng.
 	numberReducer: (state = 99, action) => {
-		console.log(action);
+		// console.log(action);
 		// Cach 1: IF ELSE
 		// if (action.type === 'TANG_GIAM_SO_LUONG') {
 		// 	state = state + action.payload;

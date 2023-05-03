@@ -81,6 +81,18 @@ class Header extends Component {
 									React Form
 								</NavLink>
 							</li>
+
+							<li className='nav-item'>
+								<NavLink
+									activeStyle={{
+										borderRadius: '10px',
+									}}
+									activeClassName={'bg-white text-dark'}
+									className='nav-link'
+									to='/lifecycle'>
+									React Lifecycle
+								</NavLink>
+							</li>
 						</ul>
 					</div>
 				</div>

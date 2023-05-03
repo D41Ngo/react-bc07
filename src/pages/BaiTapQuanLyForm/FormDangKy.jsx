@@ -35,7 +35,7 @@ class FormDangKy extends Component {
 		// Dom tới chính thẻ input đã được gõ.
 		// event.target => chính nó.
 		const { id, name, className, value } = event.target;
-		console.log({ id, name, className, value });
+		// console.log({ id, name, className, value });
 
 		// Copy
 		const newValue = { ...this.state.value };
@@ -84,7 +84,7 @@ class FormDangKy extends Component {
 			},
 			() => {
 				// theo dõi được state cập nhật tức thì
-				console.log(this.state);
+				// console.log(this.state);
 			}
 		);
 	};
@@ -137,8 +137,30 @@ class FormDangKy extends Component {
 		});
 	};
 
+	// static getDerivedStateFromProps(newProps, currentState) {
+	// 	// this.setState() tuong tu nhau,
+
+	// 	// [Chú Ý]: Không được dùng this.setState trong này. Gây ra tình huống là re-render vô tận.
+	// 	if (currentState.value.id !== newProps.nguoiDungSua.id) {
+	// 		// cập nhật lại state.
+	// 		return {
+	// 			value: newProps.nguoiDungSua,
+	// 		};
+	// 	}
+	// 	// không cập nhật lại state;
+	// 	return null;
+	// }
+
+	componentWillReceiveProps(newProps) {
+		//  khi props thay đổi thì mới chạy vào.
+		this.setState({
+			value: newProps.nguoiDungSua,
+		});
+	}
+
 	render() {
-		// console.log('render', this.state);
+		console.log('state', this.state);
+		const { id, userName, email, img, phone, address } = this.state.value; // {}
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<div className='card'>
@@ -159,6 +181,7 @@ class FormDangKy extends Component {
 									id='id'
 									name='Id'
 									onChange={this.handleOnchange}
+									value={id}
 								/>
 
 								<p className='text-danger'>{this.state.error.id}</p>
@@ -171,6 +194,7 @@ class FormDangKy extends Component {
 									id='userName'
 									name='User Name'
 									onChange={this.handleOnchange}
+									value={userName}
 								/>
 								<p className='text-danger'>{this.state.error.userName}</p>
 							</div>
@@ -182,6 +206,7 @@ class FormDangKy extends Component {
 									id='email'
 									name='Email'
 									onChange={this.handleOnchange}
+									value={email}
 								/>
 								<p className='text-danger'>{this.state.error.email}</p>
 							</div>
@@ -200,6 +225,7 @@ class FormDangKy extends Component {
 									id='img'
 									name='img'
 									onChange={this.handleOnchange}
+									value={img}
 								/>
 								<p className='text-danger'>{this.state.error.img}</p>
 							</div>
@@ -211,6 +237,7 @@ class FormDangKy extends Component {
 									id='phone'
 									name='phone'
 									onChange={this.handleOnchange}
+									value={phone}
 								/>
 								<p className='text-danger'>{this.state.error.phone}</p>
 							</div>
@@ -222,6 +249,7 @@ class FormDangKy extends Component {
 									id='address'
 									name='address'
 									onChange={this.handleOnchange}
+									value={address}
 								/>
 								<p className='text-danger'>{this.state.error.address}</p>
 							</div>
@@ -234,6 +262,23 @@ class FormDangKy extends Component {
 							width: 400,
 						}}>
 						Submit
+					</button>
+
+					<button
+						className='btn btn-success m-4'
+						style={{
+							width: 400,
+						}}
+						onClick={(event) => {
+							// chặn form lắng nghe sự kiện onSubmit
+							event.preventDefault();
+
+							this.props.dispatch({
+								type: 'CAP_NHAT_NGUOI_DUNG',
+								payload: this.state.value,
+							});
+						}}>
+						Update
 					</button>
 				</div>
 
@@ -248,4 +293,10 @@ class FormDangKy extends Component {
 	}
 }
 
-export default connect()(FormDangKy);
+const mapStateToProps = (rootReducer) => {
+	return {
+		nguoiDungSua: rootReducer.reactFormReducer.nguoiDungSua,
+	};
+};
+
+export default connect(mapStateToProps)(FormDangKy);
