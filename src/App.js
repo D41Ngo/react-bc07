@@ -12,6 +12,8 @@ import Detail from './pages/Detail';
 import Search from './pages/Search';
 import BaiTapQuanLyForm from './pages/BaiTapQuanLyForm/BaiTapQuanLyForm';
 import Lifecycle from './pages/Lifecycle/Lifecycle';
+import DemoUseState from './pages/DemoHooks/DemoUseState/DemoUseState';
+import DemoUseEffect from './pages/DemoHooks/DemoUseEffect/DemoUseEffect';
 
 function App() {
 	return (
@@ -65,6 +67,11 @@ function App() {
 				<Route exact path={'/btqlf'} component={BaiTapQuanLyForm} />
 
 				<Route exact path={'/lifecycle'} component={Lifecycle} />
+
+				{/* Hooks */}
+				<Route exact path={'/use-state'} component={DemoUseState} />
+
+				<Route exact path={'/use-effect'} component={DemoUseEffect} />
 
 				{/*khai báo parameter trên url*/}
 				<Route exact path={'/detail/:demoId'} component={Detail} />

@@ -1,20 +1,21 @@
-import React, {Component} from 'react';
-import {Redirect} from "react-router-dom";
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class About extends Component {
-    render() {
-        if(!localStorage.getItem('userName')){
-            // chuyen nguoi dung ve trang login
+	state = {
+		count: 0,
+		imgSrc: '',
+	};
 
-            return <Redirect to={'/login'} />
-        }
+	render() {
+		if (!localStorage.getItem('userName')) {
+			// chuyen nguoi dung ve trang login
 
-        return (
-            <div>
-                About
-            </div>
-        );
-    }
+			return <Redirect to={'/login'} />;
+		}
+
+		return <div>About</div>;
+	}
 }
 
 export default About;

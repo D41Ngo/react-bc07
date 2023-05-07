@@ -93,6 +93,32 @@ class Header extends Component {
 									React Lifecycle
 								</NavLink>
 							</li>
+
+							<div className='dropdown'>
+								<button
+									className='btn btn-secondary dropdown-toggle'
+									type='button'
+									id='dropdownMenuButton1'
+									data-bs-toggle='dropdown'
+									aria-expanded='false'>
+									React Hooks
+								</button>
+								<ul
+									className='dropdown-menu'
+									aria-labelledby='dropdownMenuButton1'>
+									<li>
+										<NavLink className='nav-link text-dark' to='/use-state'>
+											Hook useState
+										</NavLink>
+									</li>
+
+									<li>
+										<NavLink className='nav-link text-dark' to='/use-effect'>
+											Hook useEffect
+										</NavLink>
+									</li>
+								</ul>
+							</div>
 						</ul>
 					</div>
 				</div>
