@@ -14,6 +14,9 @@ import BaiTapQuanLyForm from './pages/BaiTapQuanLyForm/BaiTapQuanLyForm';
 import Lifecycle from './pages/Lifecycle/Lifecycle';
 import DemoUseState from './pages/DemoHooks/DemoUseState/DemoUseState';
 import DemoUseEffect from './pages/DemoHooks/DemoUseEffect/DemoUseEffect';
+import DemoUseRef from './pages/DemoHooks/DemoUseRef/DemoUseRef';
+import DemoHookRedux from './pages/DemoHooks/DemoHookRedux/DemoHookRedux';
+import DemoHookRouter from './pages/DemoHooks/DemoHookRouter';
 
 function App() {
 	return (
@@ -72,6 +75,12 @@ function App() {
 				<Route exact path={'/use-state'} component={DemoUseState} />
 
 				<Route exact path={'/use-effect'} component={DemoUseEffect} />
+
+				<Route exact path={'/use-ref'} component={DemoUseRef} />
+
+				<Route exact path={'/hook-redux'} component={DemoHookRedux} />
+
+				<Route exact path={'/hook-router'} component={DemoHookRouter} />
 
 				{/*khai báo parameter trên url*/}
 				<Route exact path={'/detail/:demoId'} component={Detail} />

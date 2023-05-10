@@ -2,6 +2,7 @@ import { combineReducers, createStore } from 'redux';
 import { gioHangReducer } from './reducers/gioHangReducer';
 import { gameXucXacReducer } from './reducers/gameXucXacReducer';
 import { reactFormReducer } from './reducers/reactFormReducer';
+import { fontSizeReducer } from './reducers/fontSizeReducer';
 // Khai Báo giá trị mặc định cho state
 const imgCarStateDefault = './img/products/black-car.jpg';
 
@@ -48,6 +49,8 @@ const rootReducer = combineReducers({
 	gameXucXacReducer,
 
 	reactFormReducer,
+
+	fontSizeReducer: fontSizeReducer,
 });
 
 export const store = createStore(

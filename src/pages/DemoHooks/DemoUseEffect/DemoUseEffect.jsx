@@ -1,6 +1,6 @@
 //rfce
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import DemoMot from './DemoMot';
 import ListToDo from './ListToDo';
 
@@ -49,7 +49,7 @@ function DemoUseEffect() {
 	// useEffect: Đóng vai trò unMounting. với array rỗng.
 	useEffect(() => {
 		const idInterval = setInterval(() => {
-			console.log('call api hooks');
+			// console.log('call api hooks');
 		}, 2000);
 
 		const cleanUp = () => {};
@@ -74,14 +74,41 @@ function DemoUseEffect() {
 		};
 	}, [count]);
 
+	// 0xaaaaa
+	// 0xbbbb
+
+	// useCallback: cache (lưu) lại giá trị function
+	// 0xaaaaa
+
+	// Chú ý: useCallback + memo => tránh việc re-render.
+	const increaseCount = useCallback(() => {
+		console.log({ increaseCount: count }); // 0: Closures
+
+		setCount((count) => {
+			// count: cập nhật là giá trị mới nhất của thèn count;
+			console.log({ setCount: count });
+			return count + 1;
+		});
+	}, []);
+	// dependencies: [] => chỉ tạo một lần.
+	// dependencies: phụ thuộc, hàm increaseCount sẽ tạo lại mới khi count thay đổi
+
+	// Dùng useMemo: để lưu lại giá trị biến
+	const user = useMemo(() => {
+		return {
+			name: 'Nguyễn Văn A',
+			id: 1,
+		};
+	}, []);
+
 	return (
-		<div>
-			<ListToDo />
+		<div className='container'>
+			<ListToDo count={count} increaseCount={increaseCount} user={user} />
 
 			<DemoMot />
 
 			<p>Count: {count}</p>
-			<button onClick={() => setCount(count + 1)}>+ </button>
+			<button onClick={() => setCount(count + 1)}>+</button>
 
 			<hr />
 

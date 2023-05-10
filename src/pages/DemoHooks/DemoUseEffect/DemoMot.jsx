@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 const arrDiaDiem = [
 	{
@@ -44,7 +44,7 @@ const defaultThanhPho = {
 	name: 'Hãy Chọn Thành Phố',
 };
 
-function DemoMot() {
+function DemoMot(props) {
 	const [idThanhPho, setIdThanhPho] = useState(-1);
 	const [arrQuanHuyen, setArrQuanHuyen] = useState([]);
 
@@ -102,4 +102,5 @@ function DemoMot() {
 	);
 }
 
-export default DemoMot;
+export default memo(DemoMot);
+// so sanh sallow compare ( primitive value : number string boolean null undefined)

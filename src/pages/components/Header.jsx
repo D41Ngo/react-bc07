@@ -117,6 +117,24 @@ class Header extends Component {
 											Hook useEffect
 										</NavLink>
 									</li>
+
+									<li>
+										<NavLink className='nav-link text-dark' to='/use-ref'>
+											Hook useRef
+										</NavLink>
+									</li>
+
+									<li>
+										<NavLink className='nav-link text-dark' to='/hook-redux'>
+											Hook Redux
+										</NavLink>
+									</li>
+
+									<li>
+										<NavLink className='nav-link text-dark' to='/hook-router'>
+											Hook Router
+										</NavLink>
+									</li>
 								</ul>
 							</div>
 						</ul>
