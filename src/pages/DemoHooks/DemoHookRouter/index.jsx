@@ -1,15 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function DemoHookRouter() {
-	// lấy history
-	const history = useHistory();
+	// desc: state
+	const [isLoading, setIsLoading] = useState(true);
+	const [count, setCount] = useState(0);
 
 	const userloginRef = useRef({
 		username: '',
 		password: '',
 	});
 
+	// desc: useLibrary
+	// lấy history
+	const history = useHistory();
+
+	// desc: function handle
 	const handleChange = (e) => {
 		const { value, id, name } = e.target;
 
@@ -41,6 +47,11 @@ function DemoHookRouter() {
 			alert('Nhập sai password hoặc username');
 		}
 	};
+
+	if (isLoading) {
+		return <>Loading ....</>;
+	}
+
 	return (
 		<div className='d-flex flex-column mt-2 gap-2 container'>
 			<input

@@ -17,6 +17,7 @@ import DemoUseEffect from './pages/DemoHooks/DemoUseEffect/DemoUseEffect';
 import DemoUseRef from './pages/DemoHooks/DemoUseRef/DemoUseRef';
 import DemoHookRedux from './pages/DemoHooks/DemoHookRedux/DemoHookRedux';
 import DemoHookRouter from './pages/DemoHooks/DemoHookRouter';
+import DemoUseContext from './pages/DemoHooks/DemoUseContext/DemoUseContext';
 
 function App() {
 	return (
@@ -81,6 +82,8 @@ function App() {
 				<Route exact path={'/hook-redux'} component={DemoHookRedux} />
 
 				<Route exact path={'/hook-router'} component={DemoHookRouter} />
+
+				<Route exact path={'/hook-context'} component={DemoUseContext} />
 
 				{/*khai báo parameter trên url*/}
 				<Route exact path={'/detail/:demoId'} component={Detail} />

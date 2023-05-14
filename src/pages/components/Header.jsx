@@ -135,6 +135,12 @@ class Header extends Component {
 											Hook Router
 										</NavLink>
 									</li>
+
+									<li>
+										<NavLink className='nav-link text-dark' to='/hook-context'>
+											Hook Context + Reducer
+										</NavLink>
+									</li>
 								</ul>
 							</div>
 						</ul>
